@@ -24,4 +24,4 @@ jobs:
         with:
           working-dir: frontend
       - name: Run Biome
-        run: biome ci --reporter=github
+        run: biome ci
