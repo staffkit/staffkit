@@ -24,10 +24,12 @@ jobs:
         include: 
           - driver: 'mysql'
             database: 'staffkit'
+            host: 'mysql'
             port: 3307
           - driver: 'postgres'
             database: 'staffkit'
             port: 5433
+            host: 'postgres'
           - driver: 'sqlite'
             database: ':memory:'
     services:
@@ -73,7 +75,8 @@ jobs:
         run: vendor/bin/phpunit
         env:
           DB_CONNECTION: ${{ matrix.driver }}
+          DB_HOST: ${{ matrix.host }}
+          DB_PORT: ${{ matrix.database.port }}
           DB_DATABASE: ${{ matrix.database }}
           DB_USERNAME: staffkit
           DB_PASSWORD: staffkit
-          DB_PORT: ${{ matrix.database.port }}
