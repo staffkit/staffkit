@@ -23,13 +23,13 @@ jobs:
         driver: [ 'sqlite', 'mysql', 'postgres' ]
         include: 
           - driver: 'mysql'
-            database: 'staffkit'
-            host: 'mysql'
+            host: '127.0.0.1'
             port: 3307
-          - driver: 'postgres'
             database: 'staffkit'
+          - driver: 'postgres'
+            host: '127.0.0.1'
             port: 5433
-            host: 'postgres'
+            database: 'staffkit'
           - driver: 'sqlite'
             database: ':memory:'
     services:
