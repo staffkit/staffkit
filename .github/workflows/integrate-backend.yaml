@@ -34,7 +34,7 @@ jobs:
             database: ':memory:'
     services:
       postgres:
-        image: ${{ matrix.database == 'postgres' && 'postgres:16.3' || '' }}
+        image: ${{ matrix.driver == 'postgres' && 'postgres:16.3' || '' }}
         env:
           POSTGRES_USER: staffkit
           POSTGRES_PASSWORD: staffkit
@@ -47,7 +47,7 @@ jobs:
         ports:
           - 5433:5432
       mysql:
-        image: ${{ matrix.database == 'mysql' && 'mysql:9.0' || '' }}
+        image: ${{ matrix.driver == 'mysql' && 'mysql:9.0' || '' }}
         env:
           MYSQL_ROOT_PASSWORD: staffkit
           MYSQL_DATABASE: staffkit
