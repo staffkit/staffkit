@@ -14,7 +14,7 @@ defaults:
 jobs:
 
   test:
-    name: Test (PHP ${{ matrix.php }} - ${{ matrix.driver }})
+    name: Test (PHP ${{ matrix.php }} - ${{ matrix.name }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -23,14 +23,17 @@ jobs:
         driver: [ 'sqlite', 'mysql', 'postgres' ]
         include: 
           - driver: 'mysql'
+            name: MySQL
             host: '127.0.0.1'
             port: 3307
             database: 'staffkit'
           - driver: 'postgres'
+            name: PostgreSQL
             host: '127.0.0.1'
             port: 5433
             database: 'staffkit'
           - driver: 'sqlite'
+            name: SQLite
             database: ':memory:'
     services:
       postgres:
