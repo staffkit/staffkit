@@ -17,6 +17,24 @@ defaults:
 
 jobs:
 
+  code-format:
+    name: Code format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Install dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          working-directory: backend
+      - name: Run Pint
+        run: vendor/bin/pint --test
+
+
   test:
     name: Test (PHP ${{ matrix.php }} - ${{ matrix.name }})
     runs-on: ubuntu-latest
