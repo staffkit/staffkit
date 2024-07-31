@@ -1,6 +1,7 @@
 # StaffKit
 
-![GitHub License](https://img.shields.io/github/license/staffkit/staffkit)
+![Swiss made](.github/images/swiss-made.svg)
+![License](.github/images/license.svg)
 
 StaffKit is an open-source human resources management system. It is designed to be a simple and easy-to-use tool for managing employees, their information, and their schedules.
 
@@ -24,3 +25,5 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
+
+[GitHub License]: 
