@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'backend/**'
   pull_request:
+    paths:
+      - 'backend/**'
   workflow_dispatch:
 
 defaults:
