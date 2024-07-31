@@ -16,6 +16,47 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ '8.3' ]
+        driver: [ 'sqlite', 'mysql', 'postgres' ]
+        include: 
+          - driver: 'mysql'
+            database: 'staffkit'
+            port: 3307
+          - driver: 'postgres'
+            database: 'staffkit'
+            port: 5433
+          - driver: 'sqlite'
+            database: ':memory:'
+    services:
+      postgres:
+        image: ${{ matrix.database == 'postgres' && 'postgres:16.3' || '' }}
+        env:
+          POSTGRES_USER: staffkit
+          POSTGRES_PASSWORD: staffkit
+          POSTGRES_DB: staffkit
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5433:5432
+      mysql:
+        image: ${{ matrix.database == 'mysql' && 'mysql:9.0' || '' }}
+        env:
+          MYSQL_ROOT_PASSWORD: staffkit
+          MYSQL_DATABASE: staffkit
+          MYSQL_USER: staffkit
+          MYSQL_PASSWORD: staffkit
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 3307:3306
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,3 +70,9 @@ jobs:
           working-directory: backend
       - name: Run tests
         run: vendor/bin/phpunit
+        env:
+          DB_CONNECTION: ${{ matrix.driver }}
+          DB_DATABASE: ${{ matrix.database }}
+          DB_USERNAME: staffkit
+          DB_PASSWORD: staffkit
+          DB_PORT: ${{ matrix.database.port }}
