@@ -76,7 +76,7 @@ jobs:
         env:
           DB_CONNECTION: ${{ matrix.driver }}
           DB_HOST: ${{ matrix.host }}
-          DB_PORT: ${{ matrix.database.port }}
+          DB_PORT: ${{ matrix.port }}
           DB_DATABASE: ${{ matrix.database }}
           DB_USERNAME: staffkit
           DB_PASSWORD: staffkit
