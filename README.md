@@ -2,6 +2,9 @@
 
 ![Swiss made](.github/images/swiss-made.svg)
 ![License](.github/images/license.svg)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/staffkit/staffkit/integrate-backend.yaml?style=flat&label=Integrate%20(backend))
+
+
 
 StaffKit is an open-source human resources management system. It is designed to be a simple and easy-to-use tool for managing employees, their information, and their schedules.
 
