@@ -1,0 +1,13 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"timezone": "Europe/Zurich",
+	"extends": [
+		"config:best-practices",
+		":semanticCommitTypeAll(chore)",
+		":pinAllExceptPeerDependencies"
+	],
+	"lockFileMaintenance": {
+		"enabled": false
+	},
+	"ignoreScripts": true
+}
